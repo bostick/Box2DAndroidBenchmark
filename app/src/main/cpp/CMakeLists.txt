@@ -4,10 +4,6 @@
 # Set the minimum required version of CMake
 cmake_minimum_required(VERSION 3.22.1)
 
-# Set standards for C and C++
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD 11)
-
 # Set the project name based on the name given on the gradle.properties
 project("Box2DBenchmark")
 
@@ -69,3 +65,9 @@ target_include_directories(box2dbenchmark-lib PRIVATE "${CMAKE_SOURCE_DIR}/deps/
 
 # Link required libraries to the native application
 target_link_libraries(box2dbenchmark-lib raylib raymoblib box2d enkiTS)
+
+set_target_properties(box2dbenchmark-lib
+    PROPERTIES
+    C_STANDARD 11
+    C_STANDARD_REQUIRED ON
+)
