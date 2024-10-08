@@ -23,6 +23,10 @@
 #include <unistd.h>
 #endif
 
+#include <android/log.h>
+
+#define TAG "Box2DBenchmark"
+
 #define ARRAY_COUNT( A ) (int)( sizeof( A ) / sizeof( A[0] ) )
 #define MAYBE_UNUSED( x ) ( (void)( x ) )
 
@@ -101,7 +105,7 @@ static void* EnqueueTask( b2TaskCallback* box2dTask, int itemCount, int minRange
     }
     else
     {
-        printf( "MAX_TASKS exceeded!!!\n" );
+        __android_log_print(ANDROID_LOG_INFO, TAG, "MAX_TASKS exceeded!!!" );
         box2dTask( 0, itemCount, 0, box2dContext );
         return NULL;
     }
@@ -160,7 +164,7 @@ int main( int argc, char** argv )
         }
         else if ( strcmp( arg, "-h" ) == 0 )
         {
-            printf( "Usage\n"
+            __android_log_print(ANDROID_LOG_INFO, TAG, "Usage\n"
                     "-t=<integer>: the maximum number of threads to use\n"
                     "-b=<integer>: run a single benchmark\n"
                     "-w=<integer>: run a single worker count\n"
@@ -174,8 +178,8 @@ int main( int argc, char** argv )
         singleWorkerCount = b2ClampInt( singleWorkerCount, 1, maxThreadCount );
     }
 
-    printf( "Starting Box2D benchmarks\n" );
-    printf( "======================================\n" );
+    __android_log_print(ANDROID_LOG_INFO, TAG, "Starting Box2D benchmarks" );
+    __android_log_print(ANDROID_LOG_INFO, TAG, "======================================" );
 
     for ( int benchmarkIndex = 0; benchmarkIndex < benchmarkCount; ++benchmarkIndex )
     {
@@ -192,7 +196,7 @@ int main( int argc, char** argv )
 
         bool countersAcquired = false;
 
-        printf( "benchmark: %s, steps = %d\n", benchmarks[benchmarkIndex].name, stepCount );
+        __android_log_print(ANDROID_LOG_INFO, TAG, "benchmark: %s, steps = %d", benchmarks[benchmarkIndex].name, stepCount );
 
         float maxFps[THREAD_LIMIT] = { 0 };
 
@@ -203,7 +207,7 @@ int main( int argc, char** argv )
                 continue;
             }
 
-            printf( "thread count: %d\n", threadCount );
+            __android_log_print(ANDROID_LOG_INFO, TAG, "thread count: %d", threadCount );
 
             for ( int runIndex = 0; runIndex < runCount; ++runIndex )
             {
@@ -243,7 +247,7 @@ int main( int argc, char** argv )
 
                 float ms = b2GetMilliseconds( &timer );
                 float fps = 1000.0f * stepCount / ms;
-                printf( "run %d : %g (ms), %g (fps)\n", runIndex, ms, fps );
+                __android_log_print(ANDROID_LOG_INFO, TAG, "run %d : %g (ms), %g (fps)", runIndex, ms, fps );
 
                 maxFps[threadCount - 1] = b2MaxFloat( maxFps[threadCount - 1], fps );
 
@@ -267,7 +271,7 @@ int main( int argc, char** argv )
             }
         }
 
-        printf( "body %d / shape %d / contact %d / joint %d / stack %d\n\n", counters.bodyCount, counters.shapeCount,
+        __android_log_print(ANDROID_LOG_INFO, TAG, "body %d / shape %d / contact %d / joint %d / stack %d", counters.bodyCount, counters.shapeCount,
                 counters.contactCount, counters.jointCount, counters.stackUsed );
 
         char fileName[64] = { 0 };
@@ -287,8 +291,8 @@ int main( int argc, char** argv )
         fclose( file );
     }
 
-    printf( "======================================\n" );
-    printf( "All Box2D benchmarks complete!\n" );
+    __android_log_print(ANDROID_LOG_INFO, TAG, "======================================" );
+    __android_log_print(ANDROID_LOG_INFO, TAG, "All Box2D benchmarks complete!" );
 
     return 0;
 }
