@@ -37,7 +37,7 @@ public class NativeLoader extends NativeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         features = new Features(this);  // Instantiates the class allowing access to specific Android features
-        System.loadLibrary("raymob");   // Load your game library (don't change raymob, see gradle.properties)
+        System.loadLibrary("box2dbenchmark-lib");   // Load your game library (don't change raymob, see gradle.properties)
     }
 
     // Handling loss and regain of application focus

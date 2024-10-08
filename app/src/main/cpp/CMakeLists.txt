@@ -44,6 +44,7 @@ add_library(box2dbenchmark-lib SHARED
     many_pyramids.c
     smash.c
     tumbler.c
+    ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c
 )
 
 # Define compiler macros for the library

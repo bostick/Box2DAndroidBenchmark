@@ -37,7 +37,7 @@
 
             <meta-data
                 android:name="android.app.lib_name"
-                android:value="${APP_LIB_NAME}" />
+                android:value="box2dbenchmark-lib" />
         </activity>
 
     </application>

@@ -1130,7 +1130,11 @@ static par_shapes__rule* par_shapes__pick_rule(const char* name,
             total += rule->weight;
         }
     }
-    float r = (float) rand() / RAND_MAX;
+    //
+    // https://github.com/raysan5/raylib/issues/3526
+    // https://github.com/prideout/par/issues/53
+    //
+    float r = (float) rand() / (float) RAND_MAX;
     float t = 0;
     for (int i = 0; i < nrules; i++) {
         rule = rules + i;
