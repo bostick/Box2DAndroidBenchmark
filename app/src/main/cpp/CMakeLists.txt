@@ -11,6 +11,28 @@ set(CMAKE_CXX_STANDARD 11)
 # Set the project name based on the name given on the gradle.properties
 project("${APP_LIB_NAME}")
 
+include(FetchContent)
+
+set(BOX2D_BENCHMARKS ON)
+
+SET(ENKITS_BUILD_EXAMPLES OFF CACHE BOOL "Build enkiTS examples")
+
+# Used in tests and samples
+FetchContent_Declare(
+    enkits
+    GIT_REPOSITORY https://github.com/dougbinks/enkiTS.git
+    GIT_TAG master
+    GIT_SHALLOW TRUE
+    GIT_PROGRESS TRUE
+)
+FetchContent_MakeAvailable(enkits)
+
+FetchContent_Declare(
+    box2d
+    SOURCE_DIR /Users/brenton/development/github/box2d
+)
+FetchContent_MakeAvailable(box2d)
+
 # Include raylib and raymob as a subdirectories
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/raylib)
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/raymob)
@@ -46,4 +68,4 @@ target_include_directories(${APP_LIB_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/deps/ray
 target_include_directories(${APP_LIB_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/deps/raymob")
 
 # Link required libraries to the native application
-target_link_libraries(${APP_LIB_NAME} raylib raymoblib)
+target_link_libraries(${APP_LIB_NAME} raylib raymoblib box2d enkiTS)
