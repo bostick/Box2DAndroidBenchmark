@@ -9,7 +9,7 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_CXX_STANDARD 11)
 
 # Set the project name based on the name given on the gradle.properties
-project("${APP_LIB_NAME}")
+project("Box2DBenchmark")
 
 include(FetchContent)
 
@@ -37,25 +37,25 @@ FetchContent_MakeAvailable(box2d)
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/raylib)
 add_subdirectory(${CMAKE_SOURCE_DIR}/deps/raymob)
 
-# Fetch all source files for your project (recursively), excluding 'deps' source files
-file(GLOB_RECURSE SOURCES "${CMAKE_SOURCE_DIR}/*.c" "${CMAKE_SOURCE_DIR}/*.cpp")
-list(FILTER SOURCES EXCLUDE REGEX "${CMAKE_SOURCE_DIR}/deps/.*")
-
 # Add headers directory for android_native_app_glue.c
 include_directories(${ANDROID_NDK}/sources/android/native_app_glue/)
 
-# Add android_native_app_glue.c to the source files
-list(APPEND SOURCES ${ANDROID_NDK}/sources/android/native_app_glue/android_native_app_glue.c)
-
 # Create a shared library with game source files
-add_library(${APP_LIB_NAME} SHARED ${SOURCES})
+add_library(box2dbenchmark-lib SHARED
+    main.c
+    joint_grid.c
+    large_pyramid.c
+    many_pyramids.c
+    smash.c
+    tumbler.c
+)
 
 # Define compiler macros for the library
-target_compile_definitions(${APP_LIB_NAME} PRIVATE PLATFORM_ANDROID)
+target_compile_definitions(box2dbenchmark-lib PRIVATE PLATFORM_ANDROID)
 
 # Apply flags depending on the build type
 if(CMAKE_BUILD_TYPE MATCHES "Debug")
-    target_compile_definitions(${APP_LIB_NAME} PRIVATE _DEBUG DEBUG)
+    target_compile_definitions(box2dbenchmark-lib PRIVATE _DEBUG DEBUG)
     set(CMAKE_CXX_FLAGS_DEBUG "-g -fno-limit-debug-info")
     set(CMAKE_C_FLAGS_DEBUG "-g -fno-limit-debug-info")
 elseif(CMAKE_BUILD_TYPE MATCHES "Release")
@@ -64,8 +64,8 @@ elseif(CMAKE_BUILD_TYPE MATCHES "Release")
 endif()
 
 # Include raylib and raymob header files
-target_include_directories(${APP_LIB_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/deps/raylib")
-target_include_directories(${APP_LIB_NAME} PRIVATE "${CMAKE_SOURCE_DIR}/deps/raymob")
+target_include_directories(box2dbenchmark-lib PRIVATE "${CMAKE_SOURCE_DIR}/deps/raylib")
+target_include_directories(box2dbenchmark-lib PRIVATE "${CMAKE_SOURCE_DIR}/deps/raymob")
 
 # Link required libraries to the native application
-target_link_libraries(${APP_LIB_NAME} raylib raymoblib box2d enkiTS)
+target_link_libraries(box2dbenchmark-lib raylib raymoblib box2d enkiTS)
