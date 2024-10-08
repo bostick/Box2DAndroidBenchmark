@@ -1,0 +1,215 @@
+Starting Box2D benchmarks
+======================================
+benchmark: joint_grid, steps = 10
+thread count: 1
+Start: 0xf2aaaa60
+run 0 : 11.937 (ms), 837.731 (fps)
+run 1 : 11.977 (ms), 834.934 (fps)
+run 2 : 12.162 (ms), 822.233 (fps)
+run 3 : 12.157 (ms), 822.571 (fps)
+thread count: 2
+run 0 : 7.665 (ms), 1304.63 (fps)
+run 1 : 7.512 (ms), 1331.2 (fps)
+run 2 : 7.58 (ms), 1319.26 (fps)
+run 3 : 7.36 (ms), 1358.7 (fps)
+thread count: 3
+run 0 : 7.268 (ms), 1375.89 (fps)
+run 1 : 6.302 (ms), 1586.8 (fps)
+run 2 : 6.34 (ms), 1577.29 (fps)
+run 3 : 6.254 (ms), 1598.98 (fps)
+thread count: 4
+run 0 : 6.475 (ms), 1544.4 (fps)
+run 1 : 6.32 (ms), 1582.28 (fps)
+run 2 : 6.29 (ms), 1589.82 (fps)
+run 3 : 5.721 (ms), 1747.95 (fps)
+thread count: 5
+run 0 : 7.282 (ms), 1373.25 (fps)
+run 1 : 6.863 (ms), 1457.09 (fps)
+run 2 : 8.399 (ms), 1190.62 (fps)
+run 3 : 6.856 (ms), 1458.58 (fps)
+thread count: 6
+run 0 : 8.195 (ms), 1220.26 (fps)
+run 1 : 8.026 (ms), 1245.95 (fps)
+run 2 : 9.941 (ms), 1005.93 (fps)
+run 3 : 9.807 (ms), 1019.68 (fps)
+thread count: 7
+run 0 : 12.372 (ms), 808.277 (fps)
+run 1 : 7.168 (ms), 1395.09 (fps)
+run 2 : 9.437 (ms), 1059.66 (fps)
+run 3 : 11.262 (ms), 887.942 (fps)
+thread count: 8
+run 0 : 9.972 (ms), 1002.81 (fps)
+run 1 : 17.187 (ms), 581.835 (fps)
+run 2 : 14.779 (ms), 676.636 (fps)
+run 3 : 17.031 (ms), 587.165 (fps)
+body 100 / shape 100 / contact 0 / joint 180 / stack 24192
+benchmark: large_pyramid, steps = 10
+thread count: 1
+run 0 : 179.784 (ms), 55.6223 (fps)
+run 1 : 179.202 (ms), 55.8029 (fps)
+run 2 : 178.714 (ms), 55.9553 (fps)
+run 3 : 179.282 (ms), 55.778 (fps)
+thread count: 2
+run 0 : 102.186 (ms), 97.8608 (fps)
+run 1 : 99.569 (ms), 100.433 (fps)
+run 2 : 100.833 (ms), 99.1739 (fps)
+run 3 : 99.923 (ms), 100.077 (fps)
+thread count: 3
+run 0 : 80.744 (ms), 123.848 (fps)
+run 1 : 80.624 (ms), 124.033 (fps)
+run 2 : 80.814 (ms), 123.741 (fps)
+run 3 : 79.664 (ms), 125.527 (fps)
+thread count: 4
+run 0 : 63.883 (ms), 156.536 (fps)
+run 1 : 64.851 (ms), 154.2 (fps)
+run 2 : 66.032 (ms), 151.442 (fps)
+run 3 : 63.904 (ms), 156.485 (fps)
+thread count: 5
+run 0 : 63.241 (ms), 158.125 (fps)
+run 1 : 62.651 (ms), 159.614 (fps)
+run 2 : 63.588 (ms), 157.262 (fps)
+run 3 : 66.783 (ms), 149.739 (fps)
+thread count: 6
+run 0 : 69.231 (ms), 144.444 (fps)
+run 1 : 62.987 (ms), 158.763 (fps)
+run 2 : 68.218 (ms), 146.589 (fps)
+run 3 : 69.523 (ms), 143.837 (fps)
+thread count: 7
+run 0 : 61.231 (ms), 163.316 (fps)
+run 1 : 65.783 (ms), 152.015 (fps)
+run 2 : 73.383 (ms), 136.271 (fps)
+run 3 : 104.665 (ms), 95.5429 (fps)
+thread count: 8
+run 0 : 109.435 (ms), 91.3784 (fps)
+run 1 : 100.521 (ms), 99.4817 (fps)
+run 2 : 123.007 (ms), 81.2962 (fps)
+run 3 : 105.742 (ms), 94.5698 (fps)
+body 211 / shape 211 / contact 590 / joint 0 / stack 99136
+benchmark: many_pyramids, steps = 10
+thread count: 1
+run 0 : 1622.26 (ms), 6.16424 (fps)
+run 1 : 1619.03 (ms), 6.17652 (fps)
+run 2 : 1622.95 (ms), 6.1616 (fps)
+run 3 : 1619.99 (ms), 6.17288 (fps)
+thread count: 2
+run 0 : 818.105 (ms), 12.2234 (fps)
+run 1 : 823.101 (ms), 12.1492 (fps)
+run 2 : 816.599 (ms), 12.2459 (fps)
+run 3 : 821.096 (ms), 12.1788 (fps)
+thread count: 3
+run 0 : 563.642 (ms), 17.7418 (fps)
+run 1 : 565.353 (ms), 17.6881 (fps)
+run 2 : 567.021 (ms), 17.636 (fps)
+run 3 : 563.168 (ms), 17.7567 (fps)
+thread count: 4
+run 0 : 474.306 (ms), 21.0834 (fps)
+run 1 : 467.457 (ms), 21.3923 (fps)
+run 2 : 465.044 (ms), 21.5033 (fps)
+run 3 : 464.759 (ms), 21.5165 (fps)
+thread count: 5
+run 0 : 392.667 (ms), 25.4669 (fps)
+run 1 : 395.775 (ms), 25.2669 (fps)
+run 2 : 416.758 (ms), 23.9947 (fps)
+run 3 : 386.849 (ms), 25.8499 (fps)
+thread count: 6
+run 0 : 349.977 (ms), 28.5733 (fps)
+run 1 : 356.235 (ms), 28.0714 (fps)
+run 2 : 357.521 (ms), 27.9704 (fps)
+run 3 : 359.199 (ms), 27.8397 (fps)
+thread count: 7
+run 0 : 323.408 (ms), 30.9207 (fps)
+run 1 : 344.405 (ms), 29.0356 (fps)
+run 2 : 377.779 (ms), 26.4705 (fps)
+run 3 : 328.999 (ms), 30.3952 (fps)
+thread count: 8
+run 0 : 365.205 (ms), 27.3819 (fps)
+run 1 : 336.913 (ms), 29.6813 (fps)
+run 2 : 331.182 (ms), 30.1949 (fps)
+run 3 : 373.734 (ms), 26.757 (fps)
+body 1376 / shape 1380 / contact 3625 / joint 0 / stack 609024
+benchmark: smash, steps = 10
+thread count: 1
+run 0 : 0.35 (ms), 28571.4 (fps)
+run 1 : 0.444 (ms), 22522.5 (fps)
+run 2 : 0.364 (ms), 27472.5 (fps)
+run 3 : 0.357 (ms), 28011.2 (fps)
+thread count: 2
+run 0 : 0.368 (ms), 27173.9 (fps)
+run 1 : 0.37 (ms), 27027 (fps)
+run 2 : 0.371 (ms), 26954.2 (fps)
+run 3 : 0.359 (ms), 27855.2 (fps)
+thread count: 3
+run 0 : 0.403 (ms), 24813.9 (fps)
+run 1 : 0.481 (ms), 20790 (fps)
+run 2 : 0.396 (ms), 25252.5 (fps)
+run 3 : 0.393 (ms), 25445.3 (fps)
+thread count: 4
+run 0 : 0.422 (ms), 23696.7 (fps)
+run 1 : 0.51 (ms), 19607.8 (fps)
+run 2 : 0.699 (ms), 14306.2 (fps)
+run 3 : 0.467 (ms), 21413.3 (fps)
+thread count: 5
+run 0 : 13.011 (ms), 768.58 (fps)
+run 1 : 0.769 (ms), 13003.9 (fps)
+run 2 : 0.621 (ms), 16103.1 (fps)
+run 3 : 3.858 (ms), 2592.02 (fps)
+thread count: 6
+run 0 : 16.354 (ms), 611.471 (fps)
+run 1 : 6.018 (ms), 1661.68 (fps)
+run 2 : 12.272 (ms), 814.863 (fps)
+run 3 : 9.545 (ms), 1047.67 (fps)
+thread count: 7
+run 0 : 0.604 (ms), 16556.3 (fps)
+run 1 : 0.469 (ms), 21322 (fps)
+run 2 : 48.317 (ms), 206.966 (fps)
+run 3 : 0.693 (ms), 14430 (fps)
+thread count: 8
+run 0 : 78.723 (ms), 127.028 (fps)
+run 1 : 2.275 (ms), 4395.6 (fps)
+run 2 : 78.481 (ms), 127.419 (fps)
+run 3 : 78.962 (ms), 126.643 (fps)
+body 201 / shape 201 / contact 712 / joint 0 / stack 52288
+benchmark: tumbler, steps = 10
+thread count: 1
+run 0 : 81.711 (ms), 122.383 (fps)
+run 1 : 82.235 (ms), 121.603 (fps)
+run 2 : 80.305 (ms), 124.525 (fps)
+run 3 : 80.662 (ms), 123.974 (fps)
+thread count: 2
+run 0 : 42.207 (ms), 236.928 (fps)
+run 1 : 40.998 (ms), 243.914 (fps)
+run 2 : 41.64 (ms), 240.154 (fps)
+run 3 : 42.233 (ms), 236.782 (fps)
+thread count: 3
+run 0 : 29.038 (ms), 344.376 (fps)
+run 1 : 29.313 (ms), 341.146 (fps)
+run 2 : 29.421 (ms), 339.893 (fps)
+run 3 : 29.424 (ms), 339.859 (fps)
+thread count: 4
+run 0 : 25.707 (ms), 388.999 (fps)
+run 1 : 24.924 (ms), 401.22 (fps)
+run 2 : 26.836 (ms), 372.634 (fps)
+run 3 : 25.981 (ms), 384.897 (fps)
+thread count: 5
+run 0 : 27.402 (ms), 364.937 (fps)
+run 1 : 25.322 (ms), 394.914 (fps)
+run 2 : 24.936 (ms), 401.027 (fps)
+run 3 : 25.861 (ms), 386.683 (fps)
+thread count: 6
+run 0 : 29.711 (ms), 336.576 (fps)
+run 1 : 31.039 (ms), 322.175 (fps)
+run 2 : 37.286 (ms), 268.197 (fps)
+run 3 : 31.148 (ms), 321.048 (fps)
+thread count: 7
+run 0 : 40.403 (ms), 247.506 (fps)
+run 1 : 53.47 (ms), 187.021 (fps)
+run 2 : 43.247 (ms), 231.23 (fps)
+run 3 : 43.947 (ms), 227.547 (fps)
+thread count: 8
+run 0 : 60.374 (ms), 165.634 (fps)
+run 1 : 56.76 (ms), 176.18 (fps)
+run 2 : 44.805 (ms), 223.189 (fps)
+run 3 : 62.354 (ms), 160.375 (fps)
+body 402 / shape 404 / contact 1482 / joint 1 / stack 248992
+======================================
+All Box2D benchmarks complete!
