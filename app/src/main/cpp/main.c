@@ -23,7 +23,12 @@
 #include <unistd.h>
 #endif
 
+#include <jni.h>
+
 #include <android/log.h>
+
+char filesDir[200];
+
 
 #define TAG "Box2DBenchmark"
 
@@ -274,18 +279,35 @@ int main( int argc, char** argv )
         __android_log_print(ANDROID_LOG_INFO, TAG, "body %d / shape %d / contact %d / joint %d / stack %d", counters.bodyCount, counters.shapeCount,
                 counters.contactCount, counters.jointCount, counters.stackUsed );
 
-        char fileName[64] = { 0 };
-        snprintf( fileName, 64, "%s.csv", benchmarks[benchmarkIndex].name );
+        char fileName[200] = { 0 };
+        int res = snprintf( fileName, sizeof(fileName), "%s/%s.csv", filesDir, benchmarks[benchmarkIndex].name );
+        if (res < 0) {
+            __android_log_print(ANDROID_LOG_ERROR, TAG, "snprintf failed" );
+            exit(1);
+        }
+        if (res >= sizeof(fileName)) {
+            __android_log_print(ANDROID_LOG_ERROR, TAG, "snprintf failed" );
+            exit(1);
+        }
         FILE* file = fopen( fileName, "w" );
         if ( file == NULL )
         {
-            continue;
+            __android_log_print(ANDROID_LOG_ERROR, TAG, "opening %s failed", fileName );
+            exit(1);
         }
 
-        fprintf( file, "threads,fps\n" );
+        res = fprintf( file, "threads,fps" );
+        if (res < 0) {
+            __android_log_print(ANDROID_LOG_ERROR, TAG, "fprintf failed" );
+            exit(1);
+        }
         for ( int threadIndex = 1; threadIndex <= maxThreadCount; ++threadIndex )
         {
-            fprintf( file, "%d,%g\n", threadIndex, maxFps[threadIndex - 1] );
+            res = fprintf( file, "%d,%g", threadIndex, maxFps[threadIndex - 1] );
+            if (res < 0) {
+                __android_log_print(ANDROID_LOG_ERROR, TAG, "fprintf failed" );
+                exit(1);
+            }
         }
 
         fclose( file );
@@ -296,3 +318,34 @@ int main( int argc, char** argv )
 
     return 0;
 }
+
+
+
+extern JNIEXPORT jint JNICALL Java_com_brentonbostick_box2dbenchmark_NativeLoader_setFilesDir(JNIEnv *env, jobject jobj, jstring jfilesDir) {
+
+    (void)jobj;
+
+    const char *tmp = (*env)->GetStringUTFChars(env, jfilesDir, NULL);
+    if (tmp == NULL) {
+
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "GetStringUTFChars failed");
+
+        return 1;
+    }
+
+    strncpy(filesDir, tmp, sizeof(filesDir));
+    if (filesDir[sizeof(filesDir) - 1] != '\0') {
+
+        __android_log_print(ANDROID_LOG_ERROR, TAG, "filesDir is truncated");
+
+        (*env)->ReleaseStringUTFChars(env, jfilesDir, tmp);
+
+        return 1;
+    }
+
+    (*env)->ReleaseStringUTFChars(env, jfilesDir, tmp);
+
+    return 0;
+}
+
+
