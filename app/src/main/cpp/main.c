@@ -296,14 +296,14 @@ int main( int argc, char** argv )
             exit(1);
         }
 
-        res = fprintf( file, "threads,fps" );
+        res = fprintf( file, "threads,fps\n" );
         if (res < 0) {
             __android_log_print(ANDROID_LOG_ERROR, TAG, "fprintf failed" );
             exit(1);
         }
         for ( int threadIndex = 1; threadIndex <= maxThreadCount; ++threadIndex )
         {
-            res = fprintf( file, "%d,%g", threadIndex, maxFps[threadIndex - 1] );
+            res = fprintf( file, "%d,%g\n", threadIndex, maxFps[threadIndex - 1] );
             if (res < 0) {
                 __android_log_print(ANDROID_LOG_ERROR, TAG, "fprintf failed" );
                 exit(1);
